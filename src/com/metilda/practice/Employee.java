@@ -9,6 +9,10 @@ public class Employee {
 	private String gender = null;
 	private String hireDate = null;
 	
+	public Employee() {
+		
+	}
+	
 	public Employee(String empNum, String birthDate, String firstName, String lastName, String gender,
 			String hireDate) {
 		super();
