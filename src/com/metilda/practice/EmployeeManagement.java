@@ -15,7 +15,7 @@ public class EmployeeManagement {
 	
 	private String fileName;
 	private CSVParser parser;
-	private ArrayList<Employee> emp = new ArrayList<Employee>();
+	private ArrayList<Employee> employeeList = new ArrayList<Employee>();
 	
 	public EmployeeManagement(String fileName) {
 		this.fileName = fileName;
@@ -49,12 +49,12 @@ public class EmployeeManagement {
 			String gender = record.get("gender");
 			String hireDate = record.get("hire_date"); //10-02-198
 			Employee empObj = new Employee(empNum,birthDate,firstName,lastName,gender,hireDate);
-			emp.add(empObj);
+			employeeList.add(empObj);
 			}
 	}
 	
 	public ArrayList<Employee> getEmployees(){
-		return emp;
+		return employeeList;
 	}
 	
 	//getMaleEmployees()
@@ -74,11 +74,9 @@ public class EmployeeManagement {
 	
 	//Write a static method in EmployeeManagement to print employee details where the employees are passed as an argument.
 		
-	public static void printEmployeeDetails(Employee employee) {
-		EmployeeManagement empMgt = new EmployeeManagement(null);
-		ArrayList<Employee> empList = empMgt.getEmployees();
-		for(Employee emp : empList) {
-			if(emp.equals(employee)) {
+	public static void printEmployeeDetails(ArrayList<Employee> employee) {
+	
+		for(Employee emp : employee) {
 				String empNum = emp.getEmpNum();
 				String birthDate = emp.getBirthDate();
 				String firstName = emp.getFirstName();
@@ -92,15 +90,13 @@ public class EmployeeManagement {
 				System.out.println("Last Name : "+ lastName);
 				System.out.println("Gender: " + gender);
 				System.out.println("Hire Date : "+ hireDate);
-			}
 		}
-		
 	}	
 	
 	//Write a method to give a list of employees whose joining date later than 1998.
 	public ArrayList<Employee> getEmployeeJoinedLater(int year){
 		ArrayList<Employee> empList =new ArrayList<Employee>();
-		for(Employee employee : emp) {
+		for(Employee employee : employeeList) {
 			String hireDate = employee.getHireDate(); 
 			String[] hireDateArr = hireDate.split("-");
 			String yearStr = hireDateArr[0];
