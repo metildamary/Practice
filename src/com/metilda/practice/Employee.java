@@ -35,6 +35,9 @@ public class Employee {
 		setEmpNum(empNum);
 		setBirthDate(birthDate);
 		setHireDate(hireDate);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
 	}
 	//create new methods for setEmpNum accepting int parameter
 	

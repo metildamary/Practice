@@ -113,8 +113,11 @@ public class EmployeeManagement {
 	}
 		
 }
+/*public enum FilterCondition{EQUALS, GREATER, LESSER}*/
+// filter condition class (
 	
-	
+	// apply filter(employee,birthday,filter condition) --> declare enum inside the interface
+//
 	
 	
 	
