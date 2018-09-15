@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -77,12 +79,12 @@ public class EmployeeManagement {
 	public static void printEmployeeDetails(ArrayList<Employee> employee) {
 	
 		for(Employee emp : employee) {
-				String empNum = emp.getEmpNum();
-				String birthDate = emp.getBirthDate();
+				int empNum = emp.getEmpNum();
+				Date birthDate = emp.getBirthDate();
 				String firstName = emp.getFirstName();
 				String lastName = emp.getLastName();
 				String gender = emp.getGender();
-				String hireDate = emp.getHireDate();
+				Date hireDate = emp.getHireDate();
 				
 				System.out.println("EmpNum : " + empNum);
 				System.out.println("Birth Date : " + birthDate);
@@ -97,8 +99,10 @@ public class EmployeeManagement {
 	public ArrayList<Employee> getEmployeeJoinedLater(int year){
 		ArrayList<Employee> empList =new ArrayList<Employee>();
 		for(Employee employee : employeeList) {
-			String hireDate = employee.getHireDate(); 
-			String[] hireDateArr = hireDate.split("-");
+			Date hireDate = employee.getHireDate(); 
+			SimpleDateFormat formatter = new SimpleDateFormat("DD-MM-YYYY");
+			String dateToString = formatter.format(hireDate);
+			String[] hireDateArr = dateToString.split("-");
 			String yearStr = hireDateArr[0];
 			int yearInt = Integer.parseInt(yearStr);
 			if(yearInt > year) {

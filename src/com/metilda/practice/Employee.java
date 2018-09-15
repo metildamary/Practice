@@ -1,20 +1,25 @@
 package com.metilda.practice;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Employee {
 	
-	private String empNum = null;
-	private String birthDate = null;
+	private int empNum = 0;
+	private Date birthDate = null;
 	private String firstName = null;
 	private String lastName = null;
 	private String gender = null;
-	private String hireDate = null;
+	private Date hireDate = null;
+	private static SimpleDateFormat formatter;
 	
 	public Employee() {
 		
 	}
 	
-	public Employee(String empNum, String birthDate, String firstName, String lastName, String gender,
-			String hireDate) {
+	public Employee(int empNum, Date birthDate, String firstName, String lastName, String gender,
+			Date hireDate) {
 		super();
 		this.empNum = empNum;
 		this.birthDate = birthDate;
@@ -24,17 +29,39 @@ public class Employee {
 		this.hireDate = hireDate;
 	}
 	
-	public String getEmpNum() {
+	public Employee(String empNum, String birthDate, String firstName, String lastName, String gender,
+			String hireDate) {
+		//call the changed methods and set it to the instance variable
+		setEmpNum(empNum);
+		setBirthDate(birthDate);
+		setHireDate(hireDate);
+	}
+	//create new methods for setEmpNum accepting int parameter
+	
+	public void setEmpNum(int empNum) {
+		this.empNum = empNum;
+	}
+
+	public int getEmpNum() {
 		return empNum;
 	}
 	public void setEmpNum(String empNum) {
-		this.empNum = empNum;
+		int employeeNum = Integer.parseInt(empNum);
+		this.empNum = employeeNum;
 	}
-	public String getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
+	    formatter = new SimpleDateFormat("DD-MM-YYYY");
+		Date date = new Date();
+		try {
+			 date = formatter.parse(birthDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.birthDate = date;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -54,11 +81,19 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getHireDate() {
+	public Date getHireDate() {
 		return hireDate;
 	}
 	public void setHireDate(String hireDate) {
-		this.hireDate = hireDate;
+		formatter = new SimpleDateFormat("DD-MM-YYYY");
+		Date date = new Date();
+		try {
+			date = formatter.parse(hireDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.hireDate = date;
 	}
 	
 	
