@@ -98,7 +98,7 @@ public class EmployeeManagement {
 	//Write a method to give a list of employees whose joining date later than 1998.
 	public ArrayList<Employee> getEmployeeJoinedLater(int year){
 		ArrayList<Employee> empList =new ArrayList<Employee>();
-		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 		for(Employee employee : employeeList) {
 			Date hireDate = employee.getHireDate(); 
 			String dateToString = formatter.format(hireDate);

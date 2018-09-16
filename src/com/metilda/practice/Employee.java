@@ -12,7 +12,7 @@ public class Employee {
 	private String lastName = null;
 	private String gender = null;
 	private Date hireDate = null;
-	private static SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
+	private static SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 	
 	public Employee() {
 		
