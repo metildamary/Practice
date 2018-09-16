@@ -32,7 +32,7 @@ public class AgeFilter implements Filter {
 			LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
 			Period p = Period.between(localDate, today); // birthdate,todayDate
 			int ageInYears = p.getYears();//32
-			System.out.println("ageIn Years " + ageInYears);
+			//System.out.println("ageIn Years " + employee.getBirthDate());
 			
 			if(condition.equals(FilterConditions.LESSER)) {
 				if(ageInYears < age) {

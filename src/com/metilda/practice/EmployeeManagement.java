@@ -49,7 +49,7 @@ public class EmployeeManagement {
 			String firstName = record.get("first_name");
 			String lastName = record.get("last_name");
 			String gender = record.get("gender");
-			String hireDate = record.get("hire_date"); //10-02-198
+			String hireDate = record.get("hire_date"); //1959-12-03
 			Employee empObj = new Employee(empNum,birthDate,firstName,lastName,gender,hireDate);
 			employeeList.add(empObj);
 			}
@@ -98,9 +98,9 @@ public class EmployeeManagement {
 	//Write a method to give a list of employees whose joining date later than 1998.
 	public ArrayList<Employee> getEmployeeJoinedLater(int year){
 		ArrayList<Employee> empList =new ArrayList<Employee>();
+		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
 		for(Employee employee : employeeList) {
 			Date hireDate = employee.getHireDate(); 
-			SimpleDateFormat formatter = new SimpleDateFormat("DD-MM-YYYY");
 			String dateToString = formatter.format(hireDate);
 			String[] hireDateArr = dateToString.split("-");
 			String yearStr = hireDateArr[0];

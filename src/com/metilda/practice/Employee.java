@@ -12,7 +12,7 @@ public class Employee {
 	private String lastName = null;
 	private String gender = null;
 	private Date hireDate = null;
-	private static SimpleDateFormat formatter;
+	private static SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD");
 	
 	public Employee() {
 		
@@ -56,8 +56,7 @@ public class Employee {
 		return birthDate;
 	}
 	public void setBirthDate(String birthDate) {
-	    formatter = new SimpleDateFormat("DD-MM-YYYY");
-		Date date = new Date();
+	    Date date = new Date();
 		try {
 			 date = formatter.parse(birthDate);
 		} catch (ParseException e) {
@@ -88,7 +87,6 @@ public class Employee {
 		return hireDate;
 	}
 	public void setHireDate(String hireDate) {
-		formatter = new SimpleDateFormat("DD-MM-YYYY");
 		Date date = new Date();
 		try {
 			date = formatter.parse(hireDate);
