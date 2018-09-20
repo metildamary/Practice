@@ -14,7 +14,7 @@ public class MainApplication {
 	
 
 	public static void main(String...args) {
-		EmployeeManagement empMgt = new EmployeeManagement("C:/Users/Metilda/Downloads/employees1.csv");
+		EmployeeManagement empMgt = new EmployeeManagement("C:/Users/Metilda/Downloads/test_db-master");
 		empMgt.readCSVFile();
 		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 		ArrayList<Employee> empList = empMgt.getEmployees();

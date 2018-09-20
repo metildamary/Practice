@@ -31,3 +31,7 @@ public class GenderFilter implements Filter {
 	} 
 
 }
+
+
+// emp sal,dept, will be separate csv file. can put in same folder or anywhere // reading all the files have to print all the details of employee
+//including sal,dept,genfer and so and so. With existing filters get corresponding details of the employee
