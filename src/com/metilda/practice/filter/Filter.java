@@ -10,7 +10,7 @@ public interface Filter {
 	
 	enum FilterConditions {EQUALS, GREATER, LESSER}
 	
-	public List<Employee> applyFilter(List<Employee> employee, FilterConditions condition );
+	public List<Employee> applyFilter(List<Employee> employeeList, FilterConditions condition );
 
 }
 

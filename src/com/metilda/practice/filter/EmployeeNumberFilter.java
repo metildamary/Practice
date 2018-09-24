@@ -14,9 +14,9 @@ public class EmployeeNumberFilter implements Filter {
 		this.empNum = empNum;
 	}
 
-	public List<Employee> applyFilter(List<Employee> employees, FilterConditions condition){
+	public List<Employee> applyFilter(List<Employee> employeeList, FilterConditions condition){
 		List<Employee> empList = new ArrayList<Employee>();
-		for(Employee emp : employees) {
+		for(Employee emp : employeeList) {
 			int employeeNumber = emp.getEmpNum();
 			if(condition.equals(FilterConditions.EQUALS)) {
 				if(employeeNumber == empNum) {

@@ -1,4 +1,4 @@
-package com.metilda.practice.filter;
+package com.metilda.practice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

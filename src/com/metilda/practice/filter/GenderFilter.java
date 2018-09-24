@@ -14,18 +14,18 @@ public class GenderFilter implements Filter {
 		this.gender = gender;
 	}
 
-	public List<Employee> applyFilter(List<Employee> employee, FilterConditions condition){
-		List<Employee> employeeList = new ArrayList<Employee>();
-		for(Employee empList : employee) {
-			String empGender = empList.getGender();
+	public List<Employee> applyFilter(List<Employee> employeeList, FilterConditions condition){
+		List<Employee> empList = new ArrayList<Employee>();
+		if(!condition.equals(FilterConditions.EQUALS)) {
+			return employeeList;
+		}
+		for(Employee emp : employeeList) {
+			String empGender = emp.getGender();
 			if(condition.equals(FilterConditions.EQUALS)) {
 				if(empGender.equals(gender)) {
-					employeeList.add(empList);
+					empList.add(emp);
 				}
-			}else {
-				return employee;
-			}
-				
+			}	
 		}
 		return employeeList;
 	} 

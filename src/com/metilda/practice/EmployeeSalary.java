@@ -1,13 +1,13 @@
-package com.metilda.practice.filter;
+package com.metilda.practice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class EmployeeTitle {
-
+public class EmployeeSalary {
+	
 	private int empNum = 0;
-	private String empTitle = null;
+	private int empSalary = 0;
 	private Date fromDate = null;
 	private Date toDate = null;
 	SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
@@ -24,14 +24,17 @@ public class EmployeeTitle {
 		this.empNum = Integer.parseInt(empNum);
 	}
 	
-	public String getEmpTitle() {
-		return empTitle;
+	public int getEmpSalary() {
+		return empSalary;
 	}
-
-	public void setEmpTitle(String empTitle) {
-		this.empTitle = empTitle;
+	
+	public void setEmpSalary(int empSalary) {
+		this.empSalary = empSalary;
 	}
-
+	
+	public void setEmpSalary(String empSalary) {
+		this.empSalary = Integer.parseInt(empSalary);
+	}
 	
 	public Date getFromDate() {
 		return fromDate;

@@ -1,4 +1,4 @@
-package com.metilda.practice.filter;
+package com.metilda.practice;
 
 public class Department {
 

@@ -2,12 +2,9 @@ package com.metilda.practice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-
-import com.metilda.practice.filter.EmployeeDepartments;
-import com.metilda.practice.filter.EmployeeSalary;
-import com.metilda.practice.filter.EmployeeTitle;
 
 public class Employee {
 	
@@ -17,12 +14,6 @@ public class Employee {
 	private String lastName = null;
 	private String gender = null;
 	private Date hireDate = null;
-	private int salary = 0;
-	private Date empSalFrom = null;
-	private Date empSalTo = null;
-	private String empTitle = null;
-	private Date empTitleFrom = null;
-	private Date empTitleTo = null;
 	private static SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd");
 	private ArrayList<EmployeeDepartments> empDeptList = new ArrayList<EmployeeDepartments>();
 	private ArrayList<EmployeeSalary> empSalList = new ArrayList<EmployeeSalary>();
@@ -79,27 +70,35 @@ public class Employee {
 		}
 		this.birthDate = date;
 	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 	public String getLastName() {
 		return lastName;
 	}
+	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 	public String getGender() {
 		return gender;
 	}
+	
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 	public Date getHireDate() {
 		return hireDate;
 	}
+	
 	public void setHireDate(String hireDate) {
 		Date date = new Date();
 		try {
@@ -111,102 +110,7 @@ public class Employee {
 		this.hireDate = date;
 	}
 	
-	public int getSalary() {
-		return salary;
-	}
-
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
 	
-	public void setSalary(String salary) {
-		this.salary = Integer.parseInt(salary);
-	}
-
-
-	public Date getEmpSalFrom() {
-		return empSalFrom;
-	}
-
-	public void setEmpSalFrom(Date empSalFrom) {
-		this.empSalFrom = empSalFrom;
-	}
-	
-	public void setEmpSalFrom(String empSalFrom) {
-		Date date = new Date();
-		try {
-			date = formatter.parse(empSalFrom);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.empSalFrom = date;
-	}
-
-	public Date getEmpSalTo() {
-		return empSalTo;
-	}
-
-	public void setEmpSalTo(Date empSalTo) {
-		this.empSalTo = empSalTo;
-	}
-
-	public void setEmpSalTo(String empSalTo) {
-		Date date = new Date();
-		try {
-			date = formatter.parse(empSalTo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.empSalTo = date;
-	}
-	
-	public String getEmpTitle() {
-		return empTitle;
-	}
-
-	public void setEmpTitle(String empTitle) {
-		this.empTitle = empTitle;
-	}
-
-	public Date getEmpTitleFrom() {
-		return empTitleFrom;
-	}
-
-	public void setEmpTitleFrom(Date empTitleFrom) {
-		this.empTitleFrom = empTitleFrom;
-	}
-	
-	public void setEmpTitleFrom(String empTitleFrom) {
-		Date date = new Date();
-		try {
-			date = formatter.parse(empTitleFrom);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.empTitleFrom = date;
-	}
-
-	public Date getEmpTitleTo() {
-		return empTitleTo;
-	}
-
-	public void setEmpTitleTo(Date empTitleTo) {
-		this.empTitleTo = empTitleTo;
-	}
-	
-	public void setEmpTitleTo(String empTitleTo) {
-		Date date = new Date();
-		try {
-			date = formatter.parse(empTitleTo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.empTitleTo = date;
-	}
 
 	public ArrayList<EmployeeDepartments> getEmpdeptList() {
 		return empDeptList;
@@ -232,9 +136,39 @@ public class Employee {
 		this.empTitleList = empTitleList;
 	}
 
+
+
+/* create getLatestSalary and getLatestDepartment methods in EMployee class
+with condition if the emp to date is > today return that salary and department
+use these methods in sal filter and dept filter to check for additional conditions like
+add only the employees whose current salary i.e to_date > today date and which meets the Filterconditions
+*/
+	public EmployeeSalary getLatestSalary() {
+		EmployeeSalary employeeSal = null;
+		Date today = new Date();
+		for(EmployeeSalary empSal : empSalList) {//empNum,empSal,empfromDate,empToDate
+			Date toDate = empSal.getToDate();
+			if(toDate.after(today)) {
+				employeeSal = empSal;
+			}
+		}
+		return employeeSal;
+	}
+	
+	public EmployeeDepartments getLatestDepartment() {
+		EmployeeDepartments employeeDept = null;
+		Date today = new Date();
+		for(EmployeeDepartments empDept : empDeptList ) {
+			Date toDate = empDept.getToDate();
+			if(toDate.after(today)) {
+				employeeDept =  empDept;
+			}
+		}
+		return employeeDept;
+	}
 }
 
-/*Iterate employee list and save the details in haspMap(employee ID , employee)
- * create dept filter ,title filter and salary filter
- * create instance variable and getter setter for dept,title,salary
- * */
+
+
+
+

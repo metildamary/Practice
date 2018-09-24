@@ -21,12 +21,12 @@ public class AgeFilter implements Filter {
 		this.age = age;
 	}
 
-	public List<Employee> applyFilter(List<Employee> employees, FilterConditions condition){ //condition LESSER
+	public List<Employee> applyFilter(List<Employee> employeeList, FilterConditions condition){ //condition LESSER
 		
 		List<Employee> empList = new ArrayList<Employee>();
 		LocalDate today = LocalDate.now();
 		ZoneId defaultZoneId = ZoneId.systemDefault();
-		for(Employee employee : employees) {
+		for(Employee employee : employeeList) {
 			Date birthDate = employee.getBirthDate();
 			Instant instant = birthDate.toInstant();
 			LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
